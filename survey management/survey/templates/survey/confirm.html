@@ -1,0 +1,30 @@
+{% extends 'survey/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Survey submitted" %}{% endblock title %}
+
+{% block body %}
+<center>
+<h1>{% trans "Survey submitted"%}</h1>
+</center>
+<p>
+    <div class="alert alert-success">
+       {% trans "Thanks! Your answers have been saved" %}
+    </div>
+    <div class="alert alert-info">
+       {% trans "You can always come back and change them." %}
+    </div>
+</p>
+<center>
+<div class="row" style="padding-left: 20px">
+    <div class="col-sm-12">
+      <a href="/admin">
+        <button style="padding:10px; font-style:italic;" id="btn_makeform" class="btn btn-primary btn-md " Style="width: 100px;" OnClick="shift()" >MakeForm</button>
+      </a>
+      <a href="/survey">
+        <button style="padding:10px; font-style:italic;" id="btn_fillform" class="btn btn-primary btn-md " Style="width: 100px;" OnClick="shift()" >FillAgain</button>
+      </a>
+     </div>
+</div>
+</center>
+{% endblock %}

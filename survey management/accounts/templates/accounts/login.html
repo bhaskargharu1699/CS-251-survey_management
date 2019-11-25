@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<title>Login</title>
+{% endblock %}
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
+<script>
+  function show() {
+    var p = document.getElementById('pwd');
+    p.setAttribute('type', 'text');
+}
+
+function hide() {
+    var p = document.getElementById('pwd');
+    p.setAttribute('type', 'password');
+}
+
+var pwShown = 0;
+
+document.getElementById("eye").addEventListener("click", function () {
+    if (pwShown == 0) {
+        pwShown = 1;
+        show();
+    } else {
+        pwShown = 0;
+        hide();
+    }
+}, false);
+</script>
+<div class="overlay">
+<!-- LOGN IN FORM by Omar Dsoky -->
+<form method="post">
+  {% csrf_token %}
+
+   <!--   con = Container  for items in the form-->
+   <div class="con">
+   <!--     Start  header Content  -->
+   <header class="head-form">
+      <h2>Stoner Gang</h2>
+      <!--     A welcome message or an explanation of the login form -->
+      <p>Survey management</p>
+   </header>
+   <!--     End  header Content  -->
+   <br>
+   <div class="field-set">
+      <br>
+      <br>
+      {{ form.as_p }}
+      <button type="submit"> Log In </button>
+   </div>
+  </div>
+</form>
+</div>
+{% endblock %}

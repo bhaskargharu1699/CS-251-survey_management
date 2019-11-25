@@ -1,0 +1,36 @@
+{% extends 'survey/base.html' %}
+{% load i18n %}
+
+{% block body %}
+<style>
+body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+background-attachment: fixed;
+  background-repeat: no-repeat;
+
+    font-family: 'Vibur', cursive;
+/*   the main font */
+    font-family: 'Abel', sans-serif;
+opacity: .95;
+/* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+}
+</style>
+<center>
+<div id="intro">
+	<h1>{% trans "Welcome to the Django Survey app"%}</h1>
+
+	<ul>
+		{% for survey in surveys %}
+		<center>
+		<!-- <li> -->
+			<a href="{{ survey.get_absolute_url }}" style =
+				"font-size: 250%;
+		    font-family: 'Playfair Display', serif;
+		    color: #3EB3DE;">{% trans "Take the Survey"%} {{survey.name}}</a>
+		<!-- </li> -->
+		</center>
+		{% endfor %}
+</div>
+</center>
+{% endblock %}

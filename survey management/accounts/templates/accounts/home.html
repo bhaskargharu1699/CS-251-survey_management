@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>Home</title>
+	{% endblock %}
+</head>
+<body>
+{% block body %}
+<script>
+//get username, date and time, form type and make a link
+
+function shift()
+{
+	if(this.getAttribute('id')=="btn_makeform")
+	{
+    location.replace("/admin")
+	}
+	else location.replace("/survey")
+}
+
+function makeurl()
+{
+	var url1="{{ request.user.username }}";
+	var currentdate = new Date();
+var datetime = "_"+currentdate.getDate() + "_"
+                + (currentdate.getMonth()+1)  + "_"
+                + currentdate.getFullYear() + "__"
+                + currentdate.getHours() + "_"
+                + currentdate.getMinutes() + "_"
+                + currentdate.getSeconds() + "_";
+    var e = document.getElementById("formtype");
+var strUser = e.options[e.selectedIndex].value;
+	var url="http://127.0.0.1:8000/account/"+"form__"+url1+datetime+strUser+"__form/";
+document.getElementById('url').innerHTML = url;
+}
+</script>
+<style>
+body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+background-attachment: fixed;
+  background-repeat: no-repeat;
+
+    font-family: 'Vibur', cursive;
+/*   the main font */
+    font-family: 'Abel', sans-serif;
+opacity: .95;
+/* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+}
+</style>
+<center style="padding-top:40px;">
+<h1 style="padding:10px;  size:250%"> // Welcome {{ user }} \\ </h1>
+</center>
+<!-- <form>
+  <select id="formtype" name="Type of Form">
+    <option value="email">Name and Email</option>
+    <option value="mobile">Name and Mobile Number</option>
+    <option value="instagram">Name and Instagram</option>
+  </select>
+  <br><br>
+  <input type="button" value="Generate Link" onclick="makeurl()">
+  <p id="url"></p>
+</form> -->
+<center style="padding-top:150px;">
+<div class="row" style="padding-left: 20px;">
+    <div class="col-sm-12">
+      <a href="/admin">
+				<button style="padding:10px; font-style:italic;" id="btn_makeform" class="btn btn-primary btn-md " Style="width: 100px;" OnClick="shift()" >Create a Survey</button>
+			</a>
+			<a href="/survey">
+        <button style="padding:10px; font-style:italic;" id="btn_fillform" class="btn btn-primary btn-md " Style="width: 100px;" OnClick="shift()" >Fill a survey</button>
+			</a>
+     </div>
+</div>
+</center>
+{% endblock %}
+</body>
+</html>

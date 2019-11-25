@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<title>{% block title %}{% endblock title %}</title>
+  <link rel="icon" href="{% static 'img/favicon.ico'%}"/>
+  <link href="{% static 'survey/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'survey/css/custom.css' %}" />
+  </head>
+  <style>
+  body {
+      background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  background-attachment: fixed;
+    background-repeat: no-repeat;
+
+      font-family: 'Vibur', cursive;
+  /*   the main font */
+      font-family: 'Abel', sans-serif;
+  opacity: .95;
+  /* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+  }
+  </style>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Survey Management</a>
+        </div>
+    		{% if user.is_authenticated %}
+        <ul class="nav navbar-nav">
+          <li><a href="/account">Home</a></li>
+    			<li><a href="/account/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+          <li><a href="/account/change-password">Change Password</a></li>
+    			<li><a href="/account/profile/edit"><span class="glyphicon glyphicon-user"></span> Edit Profile</a></li>
+    			<li><a href="/account/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    		</ul>
+    		{% else %}
+    		<ul class="nav navbar-nav">
+    			<li><a href="/account/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    			<li> <a href="/account/reset-password">Reset Password</a> </li>
+    		</ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/account/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        </ul>
+    		{% endif %}
+      </div>
+    </nav>
+    <div class="container" id="wrap">
+	   {% block wrapper %} {% endblock %}
+        <div class="well" id="container-main">
+
+	   </div>
+	</div>
+
+	<div class="footer">
+        <div class="container">
+	       {% block footer %}{% endblock %}
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'survey/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'survey/js/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'survey/js/bootstrap.min.js' %}"></script>
+	{% block extrajs %}	{% endblock %}
+  {% block body %} {% endblock %}
+  </body>
+</html>
