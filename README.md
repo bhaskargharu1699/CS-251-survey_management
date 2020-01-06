@@ -4,8 +4,8 @@ To run our project, do the following:
 1. Add 'django-survey-and-report' to your requirements and get it with pip3
   as follows :-
   ~~~~~bash
-  1. echo 'django-survey-and-report' > requirements .txt
-  2. pip3 install  -r requirements.txt
+   echo 'django-survey-and-report' > requirements .txt
+   pip3 install  -r requirements.txt
   ~~~~~
 2. python manage.py migrate
 3. python manage.py createsuperuser
