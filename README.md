@@ -1,10 +1,16 @@
 # Survey-Management
 CS-251 Course Project
 To run our project, do the following:
-1. python manage.py migrate
-2. python manage.py createsuperuser
-3. In the survey management directory run "python3 manage.py runserver"
-4. open browser and visit this address http://127.0.0.1:8000
+1. Add 'django-survey-and-report' to your requirements and get it with pip3
+  as follows :-
+  ~~~~~bash
+  1. echo 'django-survey-and-report' > requirements .txt
+  2. pip3 install  -r requirements.txt
+  ~~~~~
+2. python manage.py migrate
+3. python manage.py createsuperuser
+4. In the survey management directory run "python3 manage.py runserver"
+5. open browser and visit this address http://127.0.0.1:8000
 
 ## Making a survey
 
